@@ -26,6 +26,8 @@ app.use(cors());
 // Initialize the main project folder
 app.use(express.static("dist"));
 
+console.log(__dirname)
+
 // Setup Server
 const port = 8000;
 
