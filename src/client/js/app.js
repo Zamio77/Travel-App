@@ -10,7 +10,7 @@ const baseURL =
   "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?units=imperial&zip=";
 
 // Function called by event listener
-const performAction = (e) => {
+export const performAction = (e) => {
   const zipcode = document.getElementById("zip").value;
   const feelings = document.getElementById("feelings").value;
   getWeatherData(`${baseURL}${zipcode}${apiKey}`).then(function (data) {
@@ -28,7 +28,7 @@ let generate = document
   .addEventListener("click", performAction);
 
 /* Function to GET Web API Data*/
-const getWeatherData = async (url) => {
+export const getWeatherData = async (url) => {
   const response = await fetch(url);
   try {
     const data = await response.json();
@@ -40,7 +40,7 @@ const getWeatherData = async (url) => {
 };
 
 /* Function to POST data */
-const postData = async (url = "", data = {}) => {
+export const postData = async (url = "", data = {}) => {
   const response = await fetch(url, {
     method: "POST",
     credentials: "same-origin",
@@ -62,7 +62,7 @@ const postData = async (url = "", data = {}) => {
 };
 
 /* Function to GET Project Data */
-const updateUI = async () => {
+export const updateUI = async () => {
   const request = await fetch("http://localhost:8000/all");
   try {
     const allData = await request.json();
