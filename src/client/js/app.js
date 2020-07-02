@@ -8,4 +8,6 @@ let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
 export const getName = () => {
   let name = document.getElementById('destination').value
   document.getElementById("name").innerHTML = `Hello ${name}`;
+  
+
 }
