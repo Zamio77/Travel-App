@@ -1,0 +1,20 @@
+.site-entry {
+    border: 0.5px solid black;
+    background-color: whitesmoke;
+    padding: 2em;
+    margin: auto 6em auto 2em;
+    width: 500px;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+    margin: 0 auto;
+    position: relative;
+    transform: translateY(15%);
+    width: 50vw;
+}
+
+.travel-img {
+    background-image: url(../media/Big_Ben.jpg);
+}
+
