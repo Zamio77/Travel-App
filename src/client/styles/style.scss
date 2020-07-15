@@ -7,3 +7,21 @@ body{
     background-size: cover;
 }
 
+.site-entry {
+    border: 0.5px solid black;
+    background-color: whitesmoke;
+    padding: 2em;
+    width: 500px;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    height: 15vh;
+    margin: 50px auto 25px auto;
+    position: relative;
+    transform: translateY(15%);
+    width: 50vw;
+}
+
+.travel-img {
+    
+}
