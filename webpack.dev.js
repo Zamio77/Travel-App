@@ -34,6 +34,10 @@ module.exports = {
                     'file-loader',
                 ],
             },
+            {
+                test: /\.html$/i,      // New HTML loader installed
+                loader: 'html-loader',
+            }
         ]
     },
     plugins: [
