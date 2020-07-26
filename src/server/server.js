@@ -54,6 +54,13 @@ app.get("/all", (req, res) => {
   console.log(projectData);
 });
 
+
+app.get('/geonames', (req, res) => {
+  console.log(req.body);
+  res.send(`{process.env.GEONAMES_API_ID, 'Hello World'}`);
+  
+})
+
 // POST Route
 app.post("/add", (req, res) => {
   console.log(req.body);
