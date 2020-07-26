@@ -14,7 +14,7 @@ export const testEvent = () => {
   travelCard.style.display = 'none';
   tripResults.style.display = 'flex';
   Client.postData('http://localhost:8000/geonames', {location: destination})
-  }
+}
 
 export const testEventClose = () => {
   travelCard.style.display = 'flex';

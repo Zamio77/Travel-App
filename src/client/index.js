@@ -4,8 +4,8 @@ import './styles/section.scss'
 import londonSkyline from './media/londonSkyline.jpg'
 import {testEvent} from './js/app'
 import {testEventClose} from './js/app'
-import {postData} from './js/postData'
-
+import {postData} from './js/helperFunction'
+import {getGeoNames} from './js/helperFunction'
 
 document.getElementById('input-submit').addEventListener("click", testEvent);
 document.getElementById('trip-results').addEventListener("click", testEventClose);

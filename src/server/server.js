@@ -55,9 +55,15 @@ app.get("/all", (req, res) => {
 });
 
 
-app.get('/geonames', (req, res) => {
-  console.log(req.body);
-  res.send(`{process.env.GEONAMES_API_ID, 'Hello World'}`);
+app.post('/geonames', (req, res) => {
+  console.log('GET geonames');
+  const url = `http://api.geonames.org/searchJSON?q=${req.body.location}${process.env.GEONAMES_API_ID}`
+  getGeoNames(url).then((data) => {
+    projectData.latitude  = data.geonames[0].lat;
+    projectData.longitude = data.geonames[0].lng;
+
+    res.send(projectData);
+  })
   
 })
 
@@ -77,3 +83,14 @@ app.post("/add", (req, res) => {
 app.get("/test", (req, res) => {
   res.send("Hi, the server is working...");
 });
+
+const getGeoNames = async (url) => {
+  const response = await fetch(url);
+  try {
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log("error", error);
+  }
+};
