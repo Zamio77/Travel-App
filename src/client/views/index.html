@@ -15,19 +15,21 @@
     <main>
     <section id="travel-card" class="travel-card">
       <figure>
-        <img class="travel-img" src="../media/londonSkyline.jpg" alt="London Skyline">
+        <img class="travel-img" src="../media/Big_Ben.jpg" alt="London Skyline">
         <figcaption class='fig-caption'>Choose your destination!</figcaption>
       </figure>
       <div class="travel-entry">
         <h2 class='travel-title'>Enter Travel Details</h2>
-        <input id="input_destination" class="input-travel" name="to" placeholder="Traveling to">
-        <label class="date__label" for="date">departing on...</label>
-        <input id="input__date" type="date" class="input-travel" name="date" required>
+        <input id="input-destination" class="input-travel" name="to" placeholder="Traveling to">
+      <div class="date-group">
+        <label class="date-label" for="date">Departing on...</label>
+        <input id="input-date" type="date" class="input-travel" name="date" required>
+      </div>
         <input type="submit" id="input-submit" class="input-submit" name="submit" value="Submit">
       </div>
     </section>
     <section id="trip-results" class='trip-results overlay'>
-      <h1 class="text">Hello World!</h1>
+      <div class="travel-results"></div>
     </section>
     </main>
  
