@@ -1,3 +1,5 @@
+// Global functions
+
 /* Global Variables */
 const destination = document.getElementById('input-destination').value;
 const departDate = document.getElementById('input-date').value;
@@ -13,7 +15,9 @@ const tripResults = document.getElementById('trip-results');
 export const testEvent = () => {
   travelCard.style.display = 'none';
   tripResults.style.display = 'flex';
-  Client.postData('http://localhost:8000/geonames', {location: destination})
+  Client.postData('http://localhost:8000/geonames', {location: destination}).Client.getData('http://localhost:8000/all').then((data) => {
+    console.log(data)
+  })
 }
 
 export const testEventClose = () => {

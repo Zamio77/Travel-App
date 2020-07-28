@@ -1,5 +1,8 @@
+// Global variables
 const dotenv = require('dotenv');
 dotenv.config();
+const fetch = require('node-fetch');
+
 
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};
@@ -57,11 +60,12 @@ app.get("/all", (req, res) => {
 
 app.post('/geonames', (req, res) => {
   console.log('GET geonames');
-  const url = `http://api.geonames.org/searchJSON?q=${req.body.location}${process.env.GEONAMES_API_ID}`
-  getGeoNames(url).then((data) => {
+  const url = `http://api.geonames.org/searchJSON?q=${req.body.location}&maxRows=10${process.env.GEONAMES_API_ID}`
+  getGeonames(url).then((data) => {
     projectData.latitude  = data.geonames[0].lat;
     projectData.longitude = data.geonames[0].lng;
 
+    console.log(`This is in the server ${projectData}`);
     res.send(projectData);
   })
   
@@ -84,7 +88,9 @@ app.get("/test", (req, res) => {
   res.send("Hi, the server is working...");
 });
 
-const getGeoNames = async (url) => {
+
+// Global functions
+const getGeonames = async (url) => {
   const response = await fetch(url);
   try {
     const data = await response.json();
