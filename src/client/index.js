@@ -8,7 +8,7 @@ import {postData} from './js/helperFunction'
 import {getData} from './js/helperFunction'
 
 document.getElementById('input-submit').addEventListener("click", testEvent);
-document.getElementById('trip-results').addEventListener("click", testEventClose);
+document.getElementById('travel-results').addEventListener("click", testEventClose);
 
 export {
     londonSkyline,

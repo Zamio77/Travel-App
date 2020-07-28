@@ -10,11 +10,11 @@ let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
 
 // Personal API Key for OpenWeatherMap API
 const travelCard = document.getElementById('travel-card');
-const tripResults = document.getElementById('trip-results');
+const travelResults = document.getElementById('travel-results');
 
 export const testEvent = () => {
   travelCard.style.display = 'none';
-  tripResults.style.display = 'flex';
+  travelResults.style.display = 'flex';
   Client.postData('http://localhost:8000/geonames', {location: destination}).Client.getData('http://localhost:8000/all').then((data) => {
     console.log(data)
   })
@@ -22,6 +22,6 @@ export const testEvent = () => {
 
 export const testEventClose = () => {
   travelCard.style.display = 'flex';
-  tripResults.style.display = 'none';
+  travelResults.style.display = 'none';
   }
 
