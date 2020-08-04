@@ -57,28 +57,39 @@ app.get("/all", (req, res) => {
   console.log(projectData);
 });
 
+app.post('/createTrip', (req, rest) => {
+  console.log(req.body);
 
-app.post('/geonames', (req, res) => {
+  projectData.location = req.body.location;
+  projectData.startDate = req.body.startDate;
+  projectData.endDate = req.body.endDate;
+  projectData.duration = req.body.duration;
+
+  console.log(projectData);
+  res.send('ok');
+})
+
+app.get('/geonames', (req, res) => {
   console.log('GET geonames');
   const url = `http://api.geonames.org/searchJSON?q=${req.body.location}&maxRows=10${process.env.GEONAMES_API_ID}`
-  getGeonames(url).then((data) => {
-    projectData.latitude  = data.geonames[0].lat;
-    projectData.longitude = data.geonames[0].lng;
+  console.log(url);
+  getData(url).then(response => {
+    console.log('Data from Genames[0]')
+    console.log(response.geonames[0]);
+    projectData.long = response.geonames[0].lng;
+    projectData.lat = response.geonames[0].lat;
 
-    console.log(`This is in the server ${projectData}`);
-    res.send(projectData);
+    console.log(projectData);
+    res.send(true);
+  }).catch(error => {
+    res.send(JSON.stringify({error: error}))
   })
   
 })
 
-// POST Route
-app.post("/add", (req, res) => {
-  console.log(req.body);
 
-  projectData.temp = req.body.temp;
-  projectData.date = req.body.date;
-  projectData.content = req.body.content;
 
+app.get("/all", (req, res) => {
   res.send(projectData);
   console.log(projectData);
 });
@@ -90,7 +101,7 @@ app.get("/test", (req, res) => {
 
 
 // Global functions
-const getGeonames = async (url) => {
+const getData = async (url) => {
   const response = await fetch(url);
   try {
     const data = await response.json();

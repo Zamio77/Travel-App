@@ -1,24 +1,47 @@
 // Global functions
 
+import { postData } from "./helperFunction";
+
 /* Global Variables */
-const destination = document.getElementById('input-destination').value;
-const departDate = document.getElementById('input-date').value;
-const returnDate = document.getElementById('input-return-date').value;
+const travelCard = document.getElementById('travel-card');
+const travelResults = document.getElementById('travel-results');
+
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
 
-// Personal API Key for OpenWeatherMap API
-const travelCard = document.getElementById('travel-card');
-const travelResults = document.getElementById('travel-results');
+export async function handleSubmit(event) {
+  event.preventDefault();
+  console.log('The trip begins');
 
-export const testEvent = () => {
-  travelCard.style.display = 'none';
+  const destination = document.getElementById('input-destination').value;
+  const departureDate = document.getElementById('input-date').value;
+  const returnDate = document.getElementById('input-return-date').value;
+
+  const startDate = new Date(departureDate);
+  const endDate = new Date(returnDate);
+
+  const tripDuration = endDate.getTime() - startDate.getTime();
+  const daysInTravel = tripDuration / (1000 * 60 * 60 * 24);
+
+  const travelCard = document.getElementById('travel-card');
+  const travelResults = document.getElementById('travel-results');
+
+  if(daysInTravel > 0){
+    await postData('http://localhost:8000/createTrip', {
+      location: destination,
+      startDate: startDate,
+      endDate: endDate,
+      duration: daysInTravel
+    })
+  }
+
+  travelCard.style.display = 'none'; 
   travelResults.style.display = 'flex';
-  Client.postData('http://localhost:8000/geonames', {location: destination}).Client.getData('http://localhost:8000/all').then((data) => {
-    console.log(data)
-  })
+  Client.postData('http://localhost:8000/geonames', {location: destination})
+
 }
+
 
 export const testEventClose = () => {
   travelCard.style.display = 'flex';
