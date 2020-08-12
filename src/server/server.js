@@ -98,13 +98,13 @@ app.get('/weatherBit', (req, res) => {
     const weatherData = response.data;
     
 
-    weatherData.data.forEach((data) => {
+    weatherData.data[0].forEach((data) => {
       if (data.valid_date == projectData.startDate) {
         console.log(data.temp);
         projectData.temp = data.temp;
         console.log(projectData);
         res.send(true);
-      }
+      } else return
     })
   })
 })
