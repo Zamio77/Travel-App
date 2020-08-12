@@ -27,6 +27,7 @@ app.use(bodyParser.json());
 
 // Cors for cross origin allowance
 const cors = require("cors");
+const { response } = require('express');
 app.use(cors());
 
 // Initialize the main project folder
@@ -57,7 +58,7 @@ app.get("/all", (req, res) => {
   console.log(projectData);
 });
 
-app.post('/createTrip', (req, rest) => {
+app.post('/createTrip', (req, res) => {
   console.log(req.body);
 
   projectData.location = req.body.location;
@@ -71,14 +72,14 @@ app.post('/createTrip', (req, rest) => {
 
 app.get('/geonames', (req, res) => {
   console.log('GET geonames');
-  const url = `http://api.geonames.org/searchJSON?q=${req.body.location}&maxRows=10${process.env.GEONAMES_API_ID}`
+  const url = `http://api.geonames.org/searchJSON?placename=${projectData.location}&maxRows=1&username=${process.env.GEONAMES_API_ID}`
   console.log(url);
-  getData(url).then(response => {
+  await getData(url).then(response => {
     console.log('Data from Genames[0]')
     console.log(response.geonames[0]);
-    projectData.long = response.geonames[0].lng;
     projectData.lat = response.geonames[0].lat;
-
+    projectData.long = response.geonames[0].lng;
+    
     console.log(projectData);
     res.send(true);
   }).catch(error => {
@@ -87,6 +88,25 @@ app.get('/geonames', (req, res) => {
   
 })
 
+app.get('/weatherBit', (req, res) => {
+  console.log('GET weatherBit');
+  const url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${projectData.lat}&lon=${projectData.long}&key=${process.env.WBit_Key}`
+  await getData(url).then(response => {
+    console.log('Data from weatherBit');
+    console.log(response.data);
+    const weatherData = response.data;
+    console.log(weatherData);
+
+    weatherData.forEach((data) => {
+      if (data.valid_date == projectData.startDate) {
+        console.log(data.temp);
+        projectData.temp = data.temp;
+        console.log(projectData);
+        res.send(true);
+      }
+    })
+  })
+})
 
 
 app.get("/all", (req, res) => {
@@ -94,7 +114,7 @@ app.get("/all", (req, res) => {
   console.log(projectData);
 });
 
-// Test to test the server is working
+// Test to test the server is workinga
 app.get("/test", (req, res) => {
   res.send("Hi, the server is working...");
 });

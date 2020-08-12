@@ -23,6 +23,7 @@ export async function handleSubmit(event) {
 
   const tripDuration = endDate.getTime() - startDate.getTime();
   const daysInTravel = tripDuration / (1000 * 60 * 60 * 24);
+  console.log(daysInTravel);
 
   const travelCard = document.getElementById('travel-card');
   const travelResults = document.getElementById('travel-results');
@@ -38,8 +39,8 @@ export async function handleSubmit(event) {
 
   travelCard.style.display = 'none'; 
   travelResults.style.display = 'flex';
-  Client.postData('http://localhost:8000/geonames', {location: destination})
-
+  await Client.getData('http://localhost:8000/geonames')
+  await Client.getData('http://localhost:8000/weatherBit')
 }
 
 
@@ -47,4 +48,6 @@ export const testEventClose = () => {
   travelCard.style.display = 'flex';
   travelResults.style.display = 'none';
   }
+
+
 
