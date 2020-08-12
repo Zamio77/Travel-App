@@ -96,7 +96,7 @@ app.get('/weatherBit', (req, res) => {
     console.log('Data from weatherBit');
     console.log(response.data);
     const weatherData = response.data;
-    console.log(weatherData);
+    
 
     weatherData.data.forEach((data) => {
       if (data.valid_date == projectData.startDate) {
