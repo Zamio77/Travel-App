@@ -74,7 +74,7 @@ app.get('/geonames', (req, res) => {
   console.log('GET geonames');
   const url = `http://api.geonames.org/searchJSON?placename=${projectData.location}&maxRows=1&username=${process.env.GEONAMES_API_ID}`
   console.log(url);
-  await getData(url).then(response => {
+  getData(url).then(response => {
     console.log('Data from Genames[0]')
     console.log(response.geonames[0]);
     projectData.lat = response.geonames[0].lat;
@@ -91,13 +91,14 @@ app.get('/geonames', (req, res) => {
 app.get('/weatherBit', (req, res) => {
   console.log('GET weatherBit');
   const url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${projectData.lat}&lon=${projectData.long}&key=${process.env.WBit_Key}`
-  await getData(url).then(response => {
+  console.log(url);
+  getData(url).then(response => {
     console.log('Data from weatherBit');
     console.log(response.data);
     const weatherData = response.data;
     console.log(weatherData);
 
-    weatherData.forEach((data) => {
+    weatherData.data.forEach((data) => {
       if (data.valid_date == projectData.startDate) {
         console.log(data.temp);
         projectData.temp = data.temp;
