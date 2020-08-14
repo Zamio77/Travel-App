@@ -28,14 +28,14 @@ export async function handleSubmit(event) {
   const travelCard = document.getElementById('travel-card');
   const travelResults = document.getElementById('travel-results');
 
-  if(daysInTravel > 0){
-    await postData('http://localhost:8000/createTrip', {
+  
+  await postData('http://localhost:8000/createTrip', {
       location: destination,
       startDate: startDate,
       endDate: endDate,
       duration: daysInTravel
     })
-  }
+  
 
   travelCard.style.display = 'none'; 
   travelResults.style.display = 'flex';

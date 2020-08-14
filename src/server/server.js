@@ -61,9 +61,17 @@ app.get("/all", (req, res) => {
 app.post('/createTrip', (req, res) => {
   console.log(req.body);
 
+  // targeting the days of date to get the difference
+  console.log(req.body.startDate);
+  console.log(req.body.endDate);
+  console.log(req.body.duration);
+
+  const startDays = req.body.startDate.slice(0, 10);
+  const endDays = req.body.endDate.slice(0, 10);
+
   projectData.location = req.body.location;
-  projectData.startDate = req.body.startDate;
-  projectData.endDate = req.body.endDate;
+  projectData.startDate = startDays
+  projectData.endDate = endDays
   projectData.duration = req.body.duration;
 
   console.log(projectData);
@@ -80,7 +88,7 @@ app.get('/geonames', (req, res) => {
     projectData.lat = response.geonames[0].lat;
     projectData.long = response.geonames[0].lng;
     
-    console.log(projectData);
+    console.log(`ProjectData is, ${projectData}`);
     res.send(true);
   }).catch(error => {
     res.send(JSON.stringify({error: error}))
@@ -94,13 +102,11 @@ app.get('/weatherBit', (req, res) => {
   console.log(url);
   getData(url).then(response => {
     console.log('Data from weatherBit');
-    console.log(response.data);
     const weatherData = response.data;
-    
 
     weatherData.forEach((data) => {
       if (data.valid_date == projectData.startDate) {
-        console.log(data.temp);
+        projectData.description = data.weather.description;
         projectData.temp = data.temp;
         console.log(projectData);
         res.send(true);
@@ -126,7 +132,7 @@ const getData = async (url) => {
   const response = await fetch(url);
   try {
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.log("error", error);
