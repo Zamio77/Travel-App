@@ -41,6 +41,7 @@ export async function handleSubmit(event) {
   travelResults.style.display = 'flex';
   await Client.getData('http://localhost:8000/geonames')
   await Client.getData('http://localhost:8000/weatherBit')
+  await Client.getData('http://localhost:8000/pixabay')
 }
 
 

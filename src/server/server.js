@@ -99,7 +99,6 @@ app.get('/geonames', (req, res) => {
 app.get('/weatherBit', (req, res) => {
   console.log('GET weatherBit');
   const url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${projectData.lat}&lon=${projectData.long}&key=${process.env.WBit_Key}`
-  console.log(url);
   getData(url).then(response => {
     console.log('Data from weatherBit');
     const weatherData = response.data;
@@ -112,6 +111,18 @@ app.get('/weatherBit', (req, res) => {
         res.send(true);
       } else return
     })
+  })
+})
+
+app.get('/pixabay', (req, res) => {
+  console.log('GET pixabay');
+  const url = `https://pixabay.com/api/?key=${process.env.PIXABAY_API_KEY}&q=${projectData.location}&image_type=photo`
+  console.log(url);
+  getData(url).then(response => {
+    console.log("Data from pixabay");
+    projectData.img = response.hits[0].webformatURL;
+    console.log(projectData);
+    res.send(true);
   })
 })
 
