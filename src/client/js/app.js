@@ -14,7 +14,7 @@ export async function handleSubmit(event) {
 
   // Create a new date instance dynamically with JS
   const currentDate = new Date();
-  const newDate = currentDate.getMonth() + "/" + currentDate.getDate() + "/" + currentDate.getFullYear();
+  const newDate = currentDate.getMonth() + "-" + currentDate.getDate() + "-" + currentDate.getFullYear();
   console.log(`newDate: ${newDate}`)
 
   const destination = document.getElementById('input-destination').value;
@@ -31,7 +31,7 @@ export async function handleSubmit(event) {
 
   // Find the time between now and departure
   const timeTillTripStart = startDate.getTime() - currentDate.getTime();
-  const timeTillTravel = timeTillTripStart / (1000 * 60 * 60 * 24);
+  const timeTillTravel = Math.round(timeTillTripStart / (1000 * 60 * 60 * 24));
   console.log(`timeTillTravel: ${timeTillTravel}`);
 
   const travelCard = document.getElementById('travel-card');

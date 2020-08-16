@@ -37,7 +37,7 @@ export const updateUI = async (url) => {
     document.getElementById("result-destination").innerHTML = `Trip to: ${data.location}`
     document.getElementById("result-departure").innerHTML = `Departure: ${data.startDate}`
     document.getElementById("result-return").innerHTML = `Return: ${data.endDate}`
-    document.getElementById("result-duration").innerHTML = `Duration: ${data.duration}`
+    document.getElementById("result-duration").innerHTML = `Duration: ${data.duration} days`
     document.getElementById("trip-start").innerHTML = `Your trip is ${data.timeTillTravel} days from now`
     document.getElementById("result-temp").innerHTML = `${data.temp}°F`
     document.getElementById("result-description").innerHTML = `${data.description}`
