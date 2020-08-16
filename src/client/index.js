@@ -7,6 +7,7 @@ import {handleSubmit} from './js/app'
 import {testEventClose} from './js/app'
 import {postData} from './js/helperFunction'
 import {getData} from './js/helperFunction'
+import {updateUI} from './js/helperFunction'
 
 document.getElementById('input-submit').addEventListener("click", handleSubmit);
 document.getElementById('travel-results').addEventListener("click", testEventClose);
@@ -16,5 +17,6 @@ export {
     handleSubmit,
     testEventClose,
     postData,
-    getData
+    getData,
+    updateUI
 }

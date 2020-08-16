@@ -28,3 +28,19 @@ export const getData = async (url) => {
     console.log("error", error);
   }
 };
+
+export const updateUI = async (url) => {
+  const response = await fetch(url);
+  try {
+    const data = await response.json();
+    document.getElementById("result-destination").innerHTML = `Trip to: ${data.location}`
+    document.getElementById("result-departure").innerHTML = `Departure: ${data.startDate}`
+    document.getElementById("result-return").innerHTML = `Return: ${data.endDate}`
+    document.getElementById("result-duration").innerHTML = `Duration: ${data.duration}`
+    document.getElementById("trip-start").innerHTML = `Your trip is ${data.timeTillTravel} days from now`
+
+
+  } catch (error) {
+    console.log("error", error);
+  }
+};

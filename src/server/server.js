@@ -70,9 +70,10 @@ app.post('/createTrip', (req, res) => {
   const endDays = req.body.endDate.slice(0, 10);
 
   projectData.location = req.body.location;
-  projectData.startDate = startDays
-  projectData.endDate = endDays
+  projectData.startDate = startDays;
+  projectData.endDate = endDays;
   projectData.duration = req.body.duration;
+  projectData.timeTillTravel = req.body.timeTillTravel;
 
   console.log(projectData);
   res.send('ok');
@@ -99,6 +100,7 @@ app.get('/geonames', (req, res) => {
 app.get('/weatherBit', (req, res) => {
   console.log('GET weatherBit');
   const url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${projectData.lat}&lon=${projectData.long}&key=${process.env.WBit_Key}`
+  console.log(url);
   getData(url).then(response => {
     console.log('Data from weatherBit');
     const weatherData = response.data;
