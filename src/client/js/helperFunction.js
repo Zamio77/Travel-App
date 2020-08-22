@@ -29,6 +29,7 @@ export const getData = async (url) => {
   }
 };
 
+// Function to update the UI settings
 export const updateUI = async (url) => {
   const response = await fetch(url);
   try {

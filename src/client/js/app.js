@@ -47,16 +47,17 @@ export async function handleSubmit(event) {
     })
   
 
-  travelCard.style.display = 'none'; 
-  travelResults.style.display = 'flex';
+
   await Client.getData('http://localhost:8000/geonames')
   await Client.getData('http://localhost:8000/weatherBit')
   await Client.getData('http://localhost:8000/pixabay')
   await Client.updateUI('http://localhost:8000/all')
+  travelCard.style.display = 'none'; 
+  travelResults.style.display = 'flex';
 }
 
 
-export const testEventClose = () => {
+export const closeButtonEvent = () => {
   travelCard.style.display = 'flex';
   travelResults.style.display = 'none';
   }
