@@ -2,6 +2,7 @@ import './styles/style.scss'
 import './styles/header.scss'
 import './styles/section.scss'
 import './styles/results.scss'
+import './styles/savedTravelResults.scss'
 import londonSkyline from './media/londonSkyline.jpg'
 import {handleSubmit} from './js/app'
 import {closeButtonEvent} from './js/app'
@@ -15,7 +16,7 @@ document.getElementById('close-btn').addEventListener("click", closeButtonEvent)
 export {
     londonSkyline,
     handleSubmit,
-    testEventClose,
+    closeButtonEvent,
     postData,
     getData,
     updateUI

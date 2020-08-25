@@ -1,0 +1,34 @@
+.saved-travel-results {
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center; 
+}
+
+
+.saved-results-box {
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.saved-results {
+    display: flex;
+}
+
+.saved-results-entry {
+    margin: 0 0.5em 0.5em 0.5em;
+    h4 {
+        font-size: 1.2em;
+    }
+}
+
+.saved-results-image {
+    max-width: 100%;
+    height: auto;
+}
