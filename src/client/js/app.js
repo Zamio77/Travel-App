@@ -62,5 +62,42 @@ export const closeButtonEvent = () => {
   travelResults.style.display = 'none';
   }
 
+export const saveButtonEvent = () => {
+  const savedTravelResults = document.getElementById('saved-travel-results');
+  const savedResultsImage = document.getElementById("results-image").src;
+  const savedResultDestination = document.getElementById("result-destination").innerHTML;
+  const savedResultDeparture = document.getElementById("result-departure").innerHTML;
+  const savedResultReturn = document.getElementById("result-return").innerHTML;
+  const savedResultDuration = document.getElementById("result-duration").innerHTML;
+  const savedTripStart = document.getElementById("trip-start").innerHTML;
+  const savedResultTemp = document.getElementById("result-temp").innerHTML;
+  const savedResultDescription = document.getElementById("result-description").innerHTML;
+
+  const savedTrip = `<div class="saved-results-box">
+  <div class="saved-results">
+    <figure>
+      <img id="saved-results-image" class="saved-results-image" src=${savedResultsImage} alt='London Skyline'>
+      <figcaption class="">Enjoy your Trip!</figcaption>
+    </figure>
+    <div class="saved-results-entry">
+      <h4 id="saved-result-destination">${savedResultDestination}</h4>
+      <h6 id="saved-result-departure">${savedResultDeparture}</h6>
+      <h6 id="saved-result-return">${savedResultReturn}</h6>
+      <h6 id="saved-result-duration">${savedResultDuration}</h6>
+      <h6 id="saved-trip-start">${savedTripStart}</h6>
+      <h6>The current weather:</h6>
+      <h6 id="saved-result-temp">${savedResultTemp}</h6>
+      <h6 id="saved-result-description">${savedResultDescription}</h6>
+    </div>
+    <div class='saved-results-footer'>
+    </div>`
+
+// Add the trip to the section
+savedTravelResults.insertAdjacentHTML("beforeend", savedTrip);
+
+travelCard.style.display = 'flex';
+travelResults.style.display = 'none';
+}
+
 
 
