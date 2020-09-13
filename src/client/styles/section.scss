@@ -1,4 +1,5 @@
-
+$flex-column: column;
+$margin: 7em 20em;
 
 .travel-card {
     display: flex;
@@ -6,7 +7,7 @@
     margin: 0 auto;
     align-items: center;
     justify-content: center;
-    margin: 7em 20em;
+    margin: $margin;
     border-radius: 25px;
     padding: 1em;
 }
@@ -64,4 +65,39 @@ label {
 
 .date-group {
     margin: 0.6em 0 0 0;
+}
+
+// Adding in styles for different media screen sizes
+
+
+@media screen and (max-width: 1300px) {
+    .travel-card {
+        flex-direction: $flex-column;
+        min-width: 700px;
+        margin: $margin;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .travel-card {
+        flex-direction: $flex-column;
+        min-width: 500px;
+        margin: $margin;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .travel-card {
+        flex-direction: $flex-column;
+        min-width: 500px;
+        margin: 5em 10em;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .travel-card {
+        flex-direction: $flex-column;
+        min-width: 500px;
+        margin: 0em 2em;
+    }
 }
