@@ -71,6 +71,10 @@ label {
 
 
 @media screen and (max-width: 1300px) {
+
+    main {
+        min-width: 700px;
+    }
     .travel-card {
         flex-direction: $flex-column;
         min-width: 700px;
