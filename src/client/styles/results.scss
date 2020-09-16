@@ -9,7 +9,9 @@
     display: flex;
     flex-direction: column;
     font-size: 1.2em;
-    
+    max-width: 80vw;
+    max-height: 80vh;
+    overflow: auto;
 }
 
 .results-entry {
@@ -20,8 +22,8 @@
 }
 
 .results-image {
-    width: 500px;
-    height: 350px;
+    width: 35vw;
+    height: 50vh;
 }
 
 .results {
