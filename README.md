@@ -1,10 +1,21 @@
 # Weather-Journal App Project
 
-## Overview
+## Capstone Project for Udacity's Front-End Nano Degree program
 This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
 
 ## Instructions
-This will require modifying the `server.js` file and the `website/app.js` file. You can see `index.html` for element references, and once you are finished with the project steps, you can use `style.css` to style your application to customized perfection.
+Basic travel planner that gives returns an image of destination, current weather of the destination, and length of trip. The app also allows users save their upcoming trips for future reference! The purpose of this project was to understand how to implement multiple APIs as well as developing skills working with javascript, HTML, CSS, SCSS and webpack.
 
-## Extras
-If you are interested in testing your code as you go, you can use `tests.js` as a template for writing and running some basic tests for your code.
+
+## Prequisites 
+Node is required to reun the project. You can follow this [link](https://nodejs.org/en/download/) to install node
+
+
+## Getting Started
+To run the project, clone this project and download using gif. 
+
+Once cloned run the following command in the root directory
+```
+npm run build-dev
+```
+
