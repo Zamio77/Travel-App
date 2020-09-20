@@ -10,12 +10,35 @@ Basic travel planner that gives returns an image of destination, current weather
 ## Prequisites 
 Node is required to reun the project. You can follow this [link](https://nodejs.org/en/download/) to install node
 
+### Installing
+
+Once cloned and downloaded, install the dependencies with the following command
+
+```
+npm install
+```
 
 ## Getting Started
 To run the project, clone this project and download using gif. 
 
-Once cloned run the following command in the root directory
+Once cloned run the following command in the root directory to run the development server
 ```
 npm run build-dev
 ```
 
+Next, open a new terminal window and run the below command to run the production server
+
+```
+npm run build-prod
+```
+
+Now, you're ready to start the server
+
+```
+npm run start
+```
+
+Now visit your localhost on port number 8080 localhost:8080 to see the server in action
+
+## Demo
+![](TravelDemonstration.gif)
