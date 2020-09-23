@@ -26,12 +26,12 @@ export async function handleSubmit(event) {
   const endDate = new Date(returnDate);
 
   const tripDuration = endDate.getTime() - startDate.getTime();
-  const daysInTravel = tripDuration / (1000 * 60 * 60 * 24);
+  const daysInTravel = tripDuration / (1000 * 3600 * 24);
   console.log(daysInTravel);
 
   // Find the time between now and departure
   const timeTillTripStart = startDate.getTime() - currentDate.getTime();
-  const timeTillTravel = Math.round(timeTillTripStart / (1000 * 60 * 60 * 24));
+  const timeTillTravel = Math.round(timeTillTripStart / (1000 * 3600 * 24));
   console.log(`timeTillTravel: ${timeTillTravel}`);
 
   const travelCard = document.getElementById('travel-card');
